@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title_block %} Change Password {% endblock %}
+
+{% block body_block %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+
+            <!-- Success Alert -->
+            {% if changed %}
+            <div class="alert alert-success text-center">
+                ✅ Password Changed Successfully
+            </div>
+            {% endif %}
+
+            <!-- Card-style Form -->
+            <div class="card shadow-sm p-4">
+                <h3 class="mb-4 text-center">🔒 Change Your Password</h3>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+
+                    <div class="d-grid mt-3">
+                        <button type="submit" class="btn btn-primary">
+                            Change Password
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

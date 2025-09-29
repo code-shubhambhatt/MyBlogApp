@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title_block %} Edit Blog {% endblock %}
+
+{% block body_block %}
+<div class="container my-5">
+    {% if blog.author == user %}
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm p-4">
+                <h2 class="mb-4 text-center text-primary">Edit Blog</h2>
+                <h5 class="mb-3 text-center">{{ blog.blog_title }}</h5>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    
+                    <div class="d-flex justify-content-between mt-3">
+                        <button type="submit" class="btn btn-info">Update</button>
+                        <a href="{% url 'App_Blog:my_blogs' %}" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p class="text-center text-danger">You are not authorized to view this page.</p>
+    {% endif %}
+</div>
+{% endblock %}
