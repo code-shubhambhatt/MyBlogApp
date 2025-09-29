@@ -10,6 +10,7 @@ A full-featured **Django-based blogging application** that allows users to regis
 * Create, edit, and delete **blogs**
 * Blog listing and **detail view**
 * Author and publish date displayed for each blog
+* **Like** and **Comment** on blogs
 * **Responsive design** with Bootstrap
 * Static files handling (CSS, images, favicon)
 
@@ -29,7 +30,7 @@ A full-featured **Django-based blogging application** that allows users to regis
 ```
 MyBlogApp/
 │
-├── App_Blog/        # Blog application logic
+├── App_Blog/        # Blog application logic (CRUD, Likes, Comments)
 ├── App_Login/       # User authentication
 ├── My_Blog/         # User-specific blog content or profile
 ├── templates/       # HTML templates
@@ -97,6 +98,7 @@ http://127.0.0.1:8000/
 * **Create Blog:** Authenticated users can add new blog posts.
 * **View Blogs:** Browse all blogs and view details.
 * **Edit/Delete Blogs:** Users can manage their own posts.
+* **Like & Comment:** Users can like blogs and post comments to engage with content.
 
 ---
 
@@ -105,7 +107,7 @@ http://127.0.0.1:8000/
 Contributions are welcome! Feel free to:
 
 * Improve UI/UX
-* Add new features like comments or likes
+* Add new features or enhance existing ones
 * Optimize code and performance
 
 ---
@@ -118,7 +120,7 @@ This project is open-source and free to use.
 
 ## Screenshots
 
-*(Add screenshots of your blog homepage, blog detail page, login/signup forms here for better presentation)*
+*(Add screenshots of your blog homepage, blog detail page, login/signup forms, and like/comment features here for better presentation)*
 
 ---
 
