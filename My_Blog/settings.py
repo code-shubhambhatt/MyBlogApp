@@ -74,21 +74,21 @@ WSGI_APPLICATION = 'My_Blog.wsgi.application'
 
 # Database
 # Database configuration
-if config('DATABASE_URL', default=None):
+DATABASE_URL = config('DATABASE_URL', default='')
+
+if DATABASE_URL and DATABASE_URL.strip():
+    # Production: Use PostgreSQL
     DATABASES = {
-        'default': dj_database_url.config(
-            default=config('DATABASE_URL'),
-            conn_max_age=600
-        )
+        'default': dj_database_url.parse(DATABASE_URL)
     }
 else:
+    # Local: Use SQLite
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
