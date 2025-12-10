@@ -1,21 +1,59 @@
-# Python
+# -------------------------
+# Python cache / bytecode
+# -------------------------
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyd
+
+# -------------------------
+# SQLite database (optional)
+# -------------------------
 *.sqlite3
 
-# Virtual environment
+# -------------------------
+# Virtual environments
+# -------------------------
 venv/
 env/
+.venv/
 
-# Django stuff
+# -------------------------
+# Django: logs & static output
+# -------------------------
 *.log
-media/
 staticfiles/
+static_root/
 
-# IDE
+# -------------------------
+# MEDIA — ignore everything
+# except ONE default image
+# -------------------------
+media/profile_pics/
+media/blog_images/
+media/*
+!media/default.jpg        # <-- your one default image
+
+# ensure the folder itself is tracked
+!media/
+
+# -------------------------
+# Environment variables & secrets
+# -------------------------
+.env
+.env.*
+*.secret
+
+# -------------------------
+# Editor / IDE files
+# -------------------------
 .vscode/
 .idea/
+*.swp
+*.swo
 
+# -------------------------
 # OS
+# -------------------------
 .DS_Store
 Thumbs.db
