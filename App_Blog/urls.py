@@ -1,6 +1,6 @@
 from django.urls import path # type: ignore
 from . import views
-
+from django.urls import re_path
 app_name = 'App_Blog'
 
 urlpatterns = [
@@ -8,7 +8,7 @@ urlpatterns = [
     path('write/', views.CreateBlog.as_view(), name="create_blog"),
     path('my-blogs/', views.MyBlogs.as_view(), name="my_blogs"),
     path('edit-blog/<pk>', views.UpdateBlog.as_view(), name="edit_blog"),
-    path('details/<slug:slug>/', views.blog_details , name="blog_details"),
+    re_path(r'^details/(?P<slug>[-a-zA-Z0-9:_\-]+)/$', views.blog_details, name="blog_details"),
     path('liked/<pk>/', views.liked , name="liked_post"),
     path('unliked/<pk>/', views.unliked , name="unliked_post"),
 ]

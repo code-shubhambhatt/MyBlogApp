@@ -6,8 +6,11 @@ from django.contrib.auth.decorators import login_required   # type: ignore
 from django.contrib.auth.mixins import LoginRequiredMixin   # type: ignore
 from django.http import HttpResponseRedirect # type: ignore
 from App_Blog.forms import CommentForm
-
+from django.utils.text import slugify
 import uuid
+from django.utils.text import slugify
+
+
 
 # Create your views here.
 # def blog_list(request) :
@@ -23,7 +26,9 @@ class UpdateBlog(LoginRequiredMixin,UpdateView) :
     template_name = 'App_Blog/edit_blog.html'
 
     def get_success_url(self,**kwargs):
-        return reverse_lazy('App_Blog/blog_details', kwargs={'slug':self.object.slug})
+        # Change this line:
+        return reverse_lazy('App_Blog:blog_details', kwargs={'slug':self.object.slug})
+        #                          ↑ Use colon, not slash!
 
 class BlogList(ListView) :
     model=Blog
@@ -37,10 +42,10 @@ class CreateBlog(LoginRequiredMixin, CreateView) :
     fields = ('blog_title' , 'blog_content' ,'blog_image')
 
     def form_valid(self, form):
-        blog_obj= form.save(commit=False)
+        blog_obj = form.save(commit=False)
         blog_obj.author = self.request.user
-        title = blog_obj.blog_title
-        blog_obj.slug = title.replace(" ","-") + "-" + str(uuid.uuid4())
+        base_slug = slugify(blog_obj.blog_title)
+        blog_obj.slug = f"{base_slug}-{uuid.uuid4()}"
         blog_obj.save()
         return HttpResponseRedirect(reverse('index'))
 

@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-1_r!%xx7nrxa+y6+_1nx#t!&=oe@$w8w-ynaklpi8)-i55my%x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['yourusername.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     # third-party apps
     'crispy_forms',
     'crispy_bootstrap5',
-    'django_cleanup.apps.CleanupConfig',
+    # 'django_cleanup.apps.CleanupConfig',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"

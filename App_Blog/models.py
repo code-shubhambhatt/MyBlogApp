@@ -1,20 +1,23 @@
-from django.db import models # type: ignore
-from django.contrib.auth.models import User # type: ignore
-# Create your models here.
+from django.db import models
+from django.contrib.auth.models import User
 
-class Blog(models.Model) :
-    author = models.ForeignKey(User , on_delete=models.CASCADE , related_name='post_author')
-    blog_title = models.CharField(max_length=264,verbose_name="Title")
+class Blog(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_author')
+    blog_title = models.CharField(max_length=264, verbose_name="Title")
     slug = models.SlugField(max_length=264, unique=True)
     blog_content = models.TextField(verbose_name="What is in your mind?")
-    blog_image = models.ImageField(upload_to='blog_images', verbose_name="Blog Image")
+    blog_image = models.ImageField(
+        upload_to='blog_images',
+        verbose_name="Blog Image",
+        blank=True  # Add this so it's optional
+    )
     publish_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
     
-    class Meta :
+    class Meta:
         ordering = ['-publish_date']
 
-    def __str__(self) :
+    def __str__(self):
         return self.blog_title
 
 class Comment(models.Model):
