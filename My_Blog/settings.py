@@ -97,6 +97,11 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://myblogapp-django.up.railway.app',
+]
+
+
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
