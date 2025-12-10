@@ -3,6 +3,10 @@
 A full-featured **Django-based blogging application** that allows users to register, login, create, edit, and view blogs. Built with Python, Django, HTML, and Bootstrap, it provides a clean and responsive interface.
 
 ---
+## 🎥 Project Walkthrough (GIF Preview)
+
+![Project Demo](assets/demo.gif)
+
 
 ## Features
 
