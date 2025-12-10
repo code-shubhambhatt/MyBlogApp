@@ -17,7 +17,15 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-temporary-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'myblogapp-django.up.railway.app',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://myblogapp-django.up.railway.app',
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -95,10 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
     {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
-]
-
-CSRF_TRUSTED_ORIGINS = [
-    'https://myblogapp-django.up.railway.app',
 ]
 
 
